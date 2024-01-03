@@ -1,5 +1,5 @@
 
-<li (mouseover)="cityOver(city)" (mouseout)="cityOut()" (click)="cityCliked(city)" [ngClass]="{'selected': city === selection, 'unselected': city === overmouse}">{{city}}</li> 
+<li (mouseover)="cityOver(city)" (mouseout)="cityOut()" (click)="cityCliked(city)" [ngClass]="{'selected': city === selection, 'unselected': city === overmouse}">{{city | titlecase}}</li> 
 
 <!-- Podríamos definir el array manualmente es decir "... of [0, 1, 2]". La variable local del for es "city" en este caso que es la que recorre el array -->
 
@@ -12,3 +12,6 @@
 <!-- Tambien se puede usar especificamente [ngStyle] para marcar el estilo directamente, pero como lo suyo es encapsular estilos es mejor el sistema por clases (y quizas la de objetos en general) 
 <li [ngStyle]="{'color': blue, 'backround-color': city === 'Madrid' ? 'blue' : 'black'}">{{city}}</li> Para poner la letra azul directamente-->
 <!-- 'backround-color': city === 'Madrid' ? 'blue' : 'black'} ==> Si es 'Madrid' se pone azul el resto negro -->
+
+<!-- PIPES ==> que es como el "titlecase", que ha algunos ya definidos por angular como este, que pone la primera mayuscula, y se puede hacer personalizados
+                Tambien se puede hacer combinación de pipes -->

@@ -1,21 +1,28 @@
 <div class="container"> <!-- si usas solo container-fluid, quita los margenes a los lados -->
     <div class="row align-items-center">
-      <div class="col-lg-6 my-4">
+      <div class="col-lg-6 my-3">
 
         <app-form-new-item (newItemEvent)="addNewCity($event)" [label]="'City'" [className]="'btn-info'"></app-form-new-item>
         <!-- Si ha [className] no le pasamos nada, recogera la que tiene predeterminada que es la primary que le pasamos en el ts de form-new-item -->
 
       </div>
+      <div class="col-lg-6 my-3">
+        <input type="text" class="form-control" placeholder="Filter....." [(ngModel)]="criterio">
+      </div>
     </div>
+    <hr>
     <div class="row">
       <div class="col-lg-8">
         <ul>
-          <app-list-cities *ngFor="let city of cities" 
-          (cityClickedEvent)="cityCliked(city)" [city]="city" [selection]="selection"></app-list-cities>
+          <app-list-cities *ngFor="let city of (cities | filter: criterio)" 
+          (cityClickedEvent)="cityCliked($event)" [city]="city" [selection]="selection"></app-list-cities>
         </ul>
       </div>
-      <div class="col-lg-4">
 
+      <p>{{'03/01/2024, 12:13' | date:'full'}}</p>
+      <p>{{'07/12/2023, 00:13' | date:'short' | uppercase}}</p>
+
+      <div class="col-lg-4">
         <div *ngIf="selection">
           <p>Your city: {{selection}}</p>
           <!-- <button (click)="Clear()">Clear selection</button> -->

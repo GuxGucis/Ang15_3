@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output,ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-form-new-item',
   templateUrl: './form-new-item.component.html',
-  styleUrls: ['./form-new-item.component.scss']
+  styleUrls: ['./form-new-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormNewItemComponent {
 
