@@ -1,0 +1,14 @@
+
+<li (mouseover)="cityOver(city)" (mouseout)="cityOut()" (click)="cityCliked(city)" [ngClass]="{'selected': city === selection, 'unselected': city === overmouse}">{{city}}</li> 
+
+<!-- Podríamos definir el array manualmente es decir "... of [0, 1, 2]". La variable local del for es "city" en este caso que es la que recorre el array -->
+
+<!-- <li [ngClass]="['selected', 'yellow']">{{city}}</li>  -->
+    <!-- [[ngClass] para la ponerclases de del css por ejemplo, las '' dentro de las "" es para indicar que pasamos un string como tal, si no se queja. Sepueden concatenar varias clases, podria poner simplemente 'selected yellow', pero es mas correcto un array ya que son varias cosas -->
+
+<!-- <li [ngClass]="{'selected': city === 'Madrid', 'yellow': city !== 'Guarroman' , 'uselected': false}">{{city}}</li>  -->
+    <!-- Añadiendo las clases como objetos que estan condicionas a condicionales, que pueden ser manuales o dinamicos -->
+
+<!-- Tambien se puede usar especificamente [ngStyle] para marcar el estilo directamente, pero como lo suyo es encapsular estilos es mejor el sistema por clases (y quizas la de objetos en general) 
+<li [ngStyle]="{'color': blue, 'backround-color': city === 'Madrid' ? 'blue' : 'black'}">{{city}}</li> Para poner la letra azul directamente-->
+<!-- 'backround-color': city === 'Madrid' ? 'blue' : 'black'} ==> Si es 'Madrid' se pone azul el resto negro -->
