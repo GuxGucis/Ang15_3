@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+
+//ESTE ES UN TEMPLATE-DRIVEN FORM
+
 interface ContactForm
 {
   "name": string;

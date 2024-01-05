@@ -9,7 +9,7 @@
 
     <div class="mb-4 form-check">
         <label for="checkAdult" class="form-label">Eres Mayor de 18?</label>
-        <input type="checkbox" class="form-check-input" id="checkAdult" name="checkAdult" [(ngModel)]="mContactForm.checkAdult" #checkAdult="ngModel">
+        <input type="checkbox" class="form-check-input" id="checkAdult" name="checkAdult" [(ngModel)]="mContactForm.checkAdult" required #checkAdult="ngModel">
         <div [hidden]="checkAdult.valid || checkAdult.pristine" class="alert alert-danger">This fiels required</div>
     </div>
 

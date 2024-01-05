@@ -29,16 +29,21 @@
           <app-button (click)="Clear()" [color]="'black'" [label]="'Clear Selection'" [selection]="selection"></app-button>
           <!-- Lo que lo hace reciclable para hacer mas botones, cambiando nombre y color de fondo -->
         </div>
-
       </div>
+
     </div>
+
 </div>
+
 <hr>
+
 <div class="container">
   <div class="row">
-    <div class="col-9">
-      <app-contact></app-contact>
+    <div class="col-6">
+      <!-- <app-contact></app-contact> -->
     </div>
-    <div class="col-3">DATA</div>
+    <div class="col-6">
+      <app-contact-reactive></app-contact-reactive>
+    </div>
   </div>
 </div>
