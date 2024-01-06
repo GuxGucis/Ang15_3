@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="/home">GUGA</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" routerLink="/home">Home</a>
+                    <!-- Otra forma de arreglar lo de home, es que vez de poner el routerLinkActiveOptions, pongamos en el router link /home, dado que nosotros sabes que el /home y es lo que queremos -->
+                    <!-- Pero el [routerLinkActiveOptions]="{exact: true}", es interesantes para segun que casos, en este le estas diciendo que solo cuando se EXACTAMENTE "/", ya que dado que todas las direcciones empiezan por / estaba dando error eso (bueno mas que error se esta confundiendo con el active) -->
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" routerLink="/contact-reactive">Forms Normal</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"  routerLinkActive="active"routerLink="/contact">Forms Reactivo</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Con href= Como que recarga toda la pagina al navegar, con routerLink como que se vuelve singlePage y no recarga casa vez -->
+
