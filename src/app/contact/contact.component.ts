@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 
 //ESTE ES UN TEMPLATE-DRIVEN FORM
 
@@ -15,7 +16,17 @@ interface ContactForm
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss']
 })
-export class ContactComponent {
+export class ContactComponent implements OnInit {
+
+  id!: string;
+
+  constructor(private readonly route: ActivatedRoute){}
+
+  ngOnInit(): void {
+    this.route.params.subscribe((params: Params) => {
+      this.id = params['id'] //Y asi recoges el (dinamicamente declarado en el routiing module)
+    })
+  }
 
   mContactForm = {
     name: '',

@@ -1,4 +1,4 @@
-<h1>Contact form</h1>
+<h1>Contact form - User {{id}}</h1> <!-- Tenemos harcodeado un id, pero si cambias el numero en la url cambia acorde con el nuevo ID, por lo que se podria hacer dinamico, guardando en una BBDD por ejemplo -->
 <form (ngSubmit)="onSubmit(contactForm.value)" #contactForm="ngForm"> <!-- #-- es una variable temporal-->
 
     <div class="mb-4">

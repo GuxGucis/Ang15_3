@@ -11,11 +11,24 @@
                     <!-- Otra forma de arreglar lo de home, es que vez de poner el routerLinkActiveOptions, pongamos en el router link /home, dado que nosotros sabes que el /home y es lo que queremos -->
                     <!-- Pero el [routerLinkActiveOptions]="{exact: true}", es interesantes para segun que casos, en este le estas diciendo que solo cuando se EXACTAMENTE "/", ya que dado que todas las direcciones empiezan por / estaba dando error eso (bueno mas que error se esta confundiendo con el active) -->
                 </li>
+
+                <!-- Hay dos maneras como vamos a ver, la 'Estandar', con router link. Y haciendo un metodo que da mas juego dinamico: -->
+
+                <!-- <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" routerLink="/contact">Forms Normal</a>
+                </li> -->
                 <li class="nav-item">
-                    <a class="nav-link" routerLinkActive="active" routerLink="/contact-reactive">Forms Normal</a>
+                    <a class="nav-link" routerLinkActive="active" (click)="goToTemplate()">Forms Normal</a>
+                </li>
+
+                <!-- <li class="nav-item">
+                    <a class="nav-link"  routerLinkActive="active"routerLink="/contact-reactive">Forms Reactivo</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link"  routerLinkActive="active" (click)="goToReactive()">Forms Reactivo</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  routerLinkActive="active"routerLink="/contact">Forms Reactivo</a>
+                    <a class="nav-link"  routerLinkActive="active"routerLink="/users">Users</a>
                 </li>
             </ul>
         </div>
