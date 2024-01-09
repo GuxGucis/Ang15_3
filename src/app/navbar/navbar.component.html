@@ -18,17 +18,17 @@
                     <a class="nav-link" routerLinkActive="active" routerLink="/contact">Forms Normal</a>
                 </li> -->
                 <li class="nav-item">
-                    <a class="nav-link" routerLinkActive="active" (click)="goToTemplate()">Forms Normal</a>
+                    <a class="nav-link" [class.active]="isActive('/contact')" (click)="goToTemplate()">Forms Normal</a>
                 </li>
 
                 <!-- <li class="nav-item">
                     <a class="nav-link"  routerLinkActive="active"routerLink="/contact-reactive">Forms Reactivo</a>
                 </li> -->
                 <li class="nav-item">
-                    <a class="nav-link"  routerLinkActive="active" (click)="goToReactive()">Forms Reactivo</a>
+                    <a class="nav-link"  [class.active]="isActive('/contact-reactive')" (click)="goToReactive()">Forms Reactivo</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  routerLinkActive="active"routerLink="/users">Users</a>
+                    <a class="nav-link"  routerLinkActive="active" routerLink="/users">Users</a>
                 </li>
             </ul>
         </div>

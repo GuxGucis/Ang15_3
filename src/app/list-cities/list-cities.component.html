@@ -1,5 +1,16 @@
 
-<li (mouseover)="cityOver(city)" (mouseout)="cityOut()" (click)="cityCliked(city)" [ngClass]="{'selected': city === selection, 'unselected': city === overmouse}">{{city | titlecase}}</li> 
+<ul class="list-group">
+    <li class="list-group-item mt-1" (mouseover)="onCityOver(city)" 
+        (mouseout)="onCityOut()" (click)="onCitySelected(city)" 
+        [ngClass]="{'active': (city?._id) === (selection?._id)}">
+            {{city.name | titlecase}}
+        
+        <button type="button" 
+            class="btn-close float-end" aria-label="Close"
+            (click)="onCityDelete(city._id)"></button>
+
+    </li> 
+</ul>
 
 <!-- Podríamos definir el array manualmente es decir "... of [0, 1, 2]". La variable local del for es "city" en este caso que es la que recorre el array -->
 

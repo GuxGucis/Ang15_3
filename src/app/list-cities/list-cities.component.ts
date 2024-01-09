@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { NEVER } from 'rxjs';
+import { City } from '../services/data.service';
 
 @Component({
   selector: 'app-list-cities',
@@ -12,25 +14,34 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 })
 export class ListCitiesComponent {
   
-  @Input() city!: string;
-  @Input() selection!: string;
+  @Input() city!: City;
+  @Input() selection!: City;
   
-  overmouse!: string;
+  overmouse!: City;
 
-  @Output() cityClickedEvent = new EventEmitter<string>();
-  @Output() cityOverEvent = new EventEmitter<string>();
+  @Output() citySelectedEvent = new EventEmitter<City>();
+  @Output() cityOverEvent = new EventEmitter<City>();
+  @Output() cityDeleteEvent = new EventEmitter<string>();
 
   
-  cityCliked(city: string):void{
-    this.cityClickedEvent.emit(city);
+  onCitySelected(city: City):void{
+    this.citySelectedEvent.emit(city);
   }
 
-  cityOver(city: string):void{
+  onCityOver(city: City):void{
     this.overmouse = city;
   }
 
-  cityOut(): void {
-    this.overmouse = ''; // Resetear el valor de overmouse
+  onCityOut(): void {
+    this.overmouse = {
+      _id: '',
+      name: ''
+    }; // Resetear el valor de overmouse
+  }
+
+  onCityDelete(id: string): void{
+
+    this.cityDeleteEvent.emit(id);
   }
 
 }

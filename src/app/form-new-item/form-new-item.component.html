@@ -4,10 +4,10 @@
             <label for="newItem" class="col-form-label">New {{label}}</label>
         </div>
         <div class="col-auto">
-            <input type="text" id="newItem" class="form-control" #newItem>
+            <input type="text" id="newItem" name="newItem" class="form-control" [ngModel]="selection" #newItem>
         </div>
         <div class="col-auto">
-            <button (click)="onAddNewItem(newItem.value)" class="btn" [ngClass]="[className]">Add {{label}}</button>
+            <button (click)="onAddNewItem(newItem.value); newItem.value = ''" class="btn" [ngClass]="[className]">Add {{label}}</button>
         </div>
     </div>
 </form>

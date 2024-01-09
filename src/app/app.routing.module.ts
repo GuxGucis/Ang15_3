@@ -14,17 +14,26 @@ import { DataResolverService } from "./resolvers/data.resolver.service";
 const routes: Routes = [
 
     { path: '', redirectTo: '/home', pathMatch: 'full' },
-    {   path: 'contact-reactive', 
+    /*     
+    {   
+        path: 'contact-reactive', 
         component: ContactReactiveComponent, 
         canDeactivate: [WithoutSaveGuard],
         resolve: {departments: DataResolverService}
-    },
+    }, 
+    */
+    // Se copia en la routing del mismo contact reactive, para poder hacer lazy routing con esa parte y se cambia por esto:
+    
+    { path: 'contact-reactive', loadChildren: ()=> import ('./contact-reactive/contact-reactive.module').then(m => m.ContactReactiveModule) },
+
     { 
         path: 'contact/:id', 
         component: ContactComponent,
         resolve: {departments: DataResolverService}
     }, //Lo que nosotros le estamos diciendo es que vendra una variable dinamica (el id del usuario por ejemplo)
+
     { path: 'home', component: HomeComponent },
+
     { 
         path:'users', component: UserComponent , canActivate: [PermissionsGuard],
         children: [
@@ -32,6 +41,7 @@ const routes: Routes = [
             { path: 'list', component: ListComponent },
         ] 
     },
+
     { path: '**', component: Page404Component }, //Esto es para que coja todas las restantes rutas para si intentas acceder a algo que no existe
 
 ];

@@ -18,4 +18,12 @@ export class NavbarComponent {
     this.router.navigate(['contact', '007']); //Por ejemplo el '007' puede ser el ID del cliente, es decir son rutas que pueden ser dinamicas dado que esto nos llevara a /contact/007
   }
 
+  isActive(baseRoute: string): boolean{
+    const currentRouteSegments = this.router.url.split('/');
+    const baseRouteSegments = baseRoute.split('/');
+    
+    // Verifica si cada segmento de la ruta base coincide con la ruta actual
+    return baseRouteSegments.every((segment, index) => currentRouteSegments[index] === segment);
+  }
+
 }
