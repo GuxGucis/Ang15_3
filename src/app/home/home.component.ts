@@ -25,6 +25,14 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  updateCity(city : City): void{
+    this.dataSVs.updateCity(city).subscribe( res => {
+      const tempArr = this.cities.filter( item => item._id !== city._id );
+      this.cities = [...tempArr, city];
+      this.Clear();
+    })
+  }
+
   addNewCity(city: string):void{
     //this.cities.push(city);
     this.dataSVs.addNewCity(city).subscribe( res =>{
@@ -39,7 +47,12 @@ export class HomeComponent implements OnInit {
 
   onCityDeleted(id: string): void{
 
-    console.log('city deleted ->', id)
+    if(confirm('Are you sure?')){
+      this.dataSVs.deleteCity(id).subscribe( res => {
+        const tempArr = this.cities.filter(city => city._id !== id);
+        this.cities = [...tempArr]
+      })
+    }
 
   }
 

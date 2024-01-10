@@ -2,10 +2,10 @@
 <ul class="list-group">
     <li class="list-group-item mt-1" (mouseover)="onCityOver(city)" 
         (mouseout)="onCityOut()" (click)="onCitySelected(city)" 
-        [ngClass]="{'active': (city?._id) === (selection?._id)}">
+        [ngClass]="{'active': (city?._id) === (selection?._id), 'unselected': (city?.name) === (overmouse?.name)}">
             {{city.name | titlecase}}
         
-        <button type="button" 
+        <button *ngIf="city?._id === selection?._id" type="button" 
             class="btn-close float-end" aria-label="Close"
             (click)="onCityDelete(city._id)"></button>
 
