@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output,ChangeDetectionStrategy } from '@angular/core';
+import { Component, EventEmitter, Input, Output,ChangeDetectionStrategy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { City } from '../services/data.service';
 
 @Component({
@@ -7,7 +7,10 @@ import { City } from '../services/data.service';
   styleUrls: ['./form-new-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FormNewItemComponent {
+export class FormNewItemComponent implements AfterViewInit{
+
+  @ViewChild('newItem') newItem!: ElementRef;
+  @ViewChild('updateItem') updateItem!: string;
 
   @Input() label!: string;
   @Input() selection!: City;
@@ -16,22 +19,34 @@ export class FormNewItemComponent {
   @Output() newItemEvent = new EventEmitter<string>();
   @Output() updateItemEvent = new EventEmitter<City>();
 
-  onAddNewItem(item: string): void{
+  ngAfterViewInit(): void {
 
-    console.log("New Item ->", item)
-    this.newItemEvent.emit(item);
+    //Hay que usar esta, porque si usamos el init como aun no esta martiarizada la vista en el Init hay que posicionarse despues
+    this.newItem.nativeElement.value.focus();
+    // console.log('this.newItem', this.newItem)
+  }
+
+  onAddNewItem(): void{
+
+    this.newItemEvent.emit(this.newItem.nativeElement.value);
+    this.Clear();
 
   }
 
-  onUpdateItem(item: City, change: string): void{
+  onUpdateItem(): void{
 
     const city: City = {
-      _id: item._id,
-      name: change
+      _id: this.selection._id, //Tiene mas sentido que lo de antes que era item._id, porque es era porque lo teniamos puesto de que llegaba del html y en verdad llega por aqui
+      name: this.newItem.nativeElement.value
     }
 
     this.updateItemEvent.emit(city);
+    this.Clear();
 
+  }
+
+  private Clear(): void{
+    this.newItem.nativeElement.value = ''
   }
 
 }

@@ -2,7 +2,7 @@
     {{departments}}
 </pre>
 
-<h1>Contact form {{name}}</h1> <!-- El name que pasamos aqui es el que ponemos en la query en el navbar -->
+<h1>Contact form {{name}}, last city selected {{(selectedCity$ | async)?.name}}</h1> <!-- El name que pasamos aqui es el que ponemos en la query en el navbar -->
 <form (ngSubmit)="onSubmit()" [formGroup]="contactForm"> <!-- #-- es una variable temporal-->
 
     <div class="mb-4">

@@ -15,9 +15,20 @@
     <hr>
     <div class="row">
       <div class="col-lg-8">
-        <app-list-cities *ngFor="let city of (cities | filter: criterio)" 
+
+        <!-- Ejemplo de comprobación de si hay al menos una ciudad en la lista. Usamos por ejemplo ng-template para cuando esta vacia. -->
+        <ng-container *ngIf="cities.length > 1"; else listEmpty>
+          <app-list-cities *ngFor="let city of (cities | filter: criterio)" 
                     (citySelectedEvent)="onCitySelected($event)" [city]="city" 
                     [selection]="selection" (cityDeleteEvent)="onCityDeleted($event)"></app-list-cities>
+        </ng-container> 
+        <!-- Es un ejemplo de ng-container, que por ejemplo en este caso lo hemos usado para poder usar ngFor y ngIf en el mismo "sitio" porque de por si
+                            no lo podrias poner en el mismo app-list-cities, daria error -->
+
+        <!-- <app-list-cities *ngFor="let city of (cities | filter: criterio)" 
+                    (citySelectedEvent)="onCitySelected($event)" [city]="city" 
+                    [selection]="selection" (cityDeleteEvent)="onCityDeleted($event)"></app-list-cities> -->
+                    
       </div>
       <div class="mt-4">
         <p>{{'03/01/2024, 12:13' | date:'full'}}</p>
@@ -31,7 +42,7 @@
       </app-card>
       <hr>
       <app-card>
-        <div card-header> ESPÑITA </div>
+        <div card-header> ESPAÑITA </div>
         <div card-body> Lista de pueblitos </div>
       </app-card>
       <div class="col-lg-4">
@@ -42,6 +53,11 @@
           <!-- Lo que lo hace reciclable para hacer mas botones, cambiando nombre y color de fondo -->
         </div>
       </div>
+
+      <!-- Template para cuando esta vacio, esto seria util para ahorraros cosas, dado que con este metodo nos ahorra pasarnos por todo el arbol -->
+      <ng-template #listEmpty>
+        We dont have citties XD
+      </ng-template>
 
     </div>
 

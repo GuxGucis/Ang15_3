@@ -1,6 +1,6 @@
 export const environment = {
 production: false,
 //estamos usando un servicio gratuito llamado crudcrud https://crudcrud.com/
-api: 'https://crudcrud.com/api/997e92fba78c439488280fe20d643491/cities'
+api: 'https://crudcrud.com/api/6a2cad96f1244eccb85dda0d1241e5bb/cities'
 
 };

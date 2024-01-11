@@ -1,5 +1,6 @@
 <h1>Contact form - User {{id}}</h1> <!-- Tenemos harcodeado un id, pero si cambias el numero en la url cambia acorde con el nuevo ID, por lo que se podria hacer dinamico, guardando en una BBDD por ejemplo -->
-<form (ngSubmit)="onSubmit(contactForm.value)" #contactForm="ngForm"> <!-- #-- es una variable temporal-->
+<!-- <form (ngSubmit)="onSubmit(contactForm.value)" #contactForm="ngForm"> Antiguo uso para el metodo, ahora vamos por ViewChild, en el .ts -->
+<form (ngSubmit)="onSubmit()" #contactForm="ngForm"> <!-- #-- es una variable temporal-->
 
     <div class="mb-4">
         <label for="name" class="form-label">Name</label>
